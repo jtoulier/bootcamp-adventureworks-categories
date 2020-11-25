@@ -1,26 +1,41 @@
-package com.bootcamp.adventureworks.categories.domain.dto;
+package com.bootcamp.adventureworks.categories.persistence.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
-public class CategoryDto {
+@Entity
+@Table(name="ProductCategory", schema = "SalesLT")
+public class Category {
+    @Id
+    @Column(name = "ProductCategoryID")
     private Integer id;
+
+    @Column(name = "ParentProductCategoryID")
     private Integer parentId;
+
+    @Column(name = "Name")
     private String name;
 
+    @Column(name = "rowguid")
     private String rowguid;
+
+    @Column(name = "ModifiedDate")
     private Date modifiedDate;
-    public CategoryDto(Integer id, String name) {
+
+    public Category() {
+    }
+
+    public Category(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public CategoryDto() {
-
-    }
-
     @Override
     public String toString() {
-        return "CategoryDto{" +
+        return "Category{" +
                 "id=" + id +
                 ", parentId=" + parentId +
                 ", name='" + name + '\'' +
@@ -68,5 +83,6 @@ public class CategoryDto {
     public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
+
 
 }
